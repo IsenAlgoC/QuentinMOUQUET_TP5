@@ -49,14 +49,14 @@ int setElement(TABLEAU* tab, int pos, int element) {
 	tab->elt[pos - 1] = element;
 	return pos;
 }
-int displayElements(TABLEAU* tab, int startPos, int endPos) { //Afficher les éléments dans l'intervalle
+int displayElements(TABLEAU* tab, int startPos, int endPos) {
 	if (startPos >= endPos) {
 		int indice = endPos;
 		endPos = startPos;
 		startPos = indice;
 	}
 
-	if (tab->elt == NULL || startPos<1 || endPos > tab->eltsCount) {//Si valeurs incohérentes sur les indices ou adresse NULL
+	if (tab->elt == NULL || startPos<1 || endPos > tab->eltsCount) {
 		return -1;
 	}
 	for (int i = startPos; i <= endPos; i++) {
@@ -64,19 +64,19 @@ int displayElements(TABLEAU* tab, int startPos, int endPos) { //Afficher les élé
 	}
 	return 0;
 }
-int deleteElements(TABLEAU* tab, int startPos, int endPos) {//Détruit les éléments dans l'intervalle des positions
+int deleteElements(TABLEAU* tab, int startPos, int endPos) {
 	if (startPos >= endPos) {
 		int indice = endPos;
 		endPos = startPos;
 		startPos = indice;
 	}
-	if (tab->elt == NULL || endPos > tab->eltsCount || startPos < 1) {//Si valeurs incohérentes sur les indices ou adresse NULL
+	if (tab->elt == NULL || endPos > tab->eltsCount || startPos < 1) {
 		return -1;
 	}
-	int* tab2 = tab->elt;//Création d'un tableau qui stocke les éléments
+	int* tab2 = tab->elt;
 	int c = 0;
 	for (int i = 0; i < tab->size; i++) {
-		if (i<(startPos - 1) || i>(endPos - 1)) {//Modification des éléments dans le tableau si l'indice est en dehors de l'intervalle
+		if (i<(startPos - 1) || i>(endPos - 1)) {
 			tab->elt[c] = tab2[i];
 			c++;
 		}
